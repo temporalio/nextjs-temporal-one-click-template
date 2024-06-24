@@ -63,6 +63,10 @@ const Product: React.FC<ProductProps> = ({ product }) => {
 
   return (
     <div key={product.id} className="relative group">
+      <div className="mt-4 flex items-center justify-between text-base font-medium text-gray-900 space-x-8">
+        <h3>{product.name}</h3>
+        <p>{product.price}</p>
+      </div>
       <div className="aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100">
         <div className="flex items-end p-4" aria-hidden="true">
           {
@@ -73,10 +77,6 @@ const Product: React.FC<ProductProps> = ({ product }) => {
             }[state]
           }
         </div>
-      </div>
-      <div className="mt-4 flex items-center justify-between text-base font-medium text-gray-900 space-x-8">
-        <h3>{product.name}</h3>
-        <p>{product.price}</p>
       </div>
     </div>
   );
@@ -105,13 +105,13 @@ const Home: React.FC = () => {
     <div className="pt-8 pb-80 sm:pt-12 sm:pb-40 lg:pt-24 lg:pb-48">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:static">
         <Head>
-          <title>Temporal + Next.js Example</title>
+          <title>Temporal + Next.js One-Click Purchase</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <header className="relative overflow-hidden">
           <div className="sm:max-w-lg">
             <h1 className="text-4xl font font-extrabold tracking-tight text-gray-900 sm:text-6xl">
-              Temporal.io + Next.js One Click Purchase Demo
+              Temporal.io + Next.js One Click Purchase
             </h1>
             <p className="mt-4 text-xl text-gray-500">
               Click on the item to buy it now.
