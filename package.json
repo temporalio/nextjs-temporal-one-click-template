@@ -13,14 +13,13 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@temporalio/activity": "^1.9.3",
-    "@temporalio/client": "^1.9.3",
-    "@temporalio/worker": "^1.9.3",
-    "@temporalio/workflow": "^1.9.3",
+    "@temporalio/activity": "^1.10.0",
+    "@temporalio/client": "^1.10.0",
+    "@temporalio/worker": "^1.10.0",
+    "@temporalio/workflow": "^1.10.0",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
-    "react-toastify": "^10.0.5",
     "uuid": "^9.0.1"
   },
   "devDependencies": {

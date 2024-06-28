@@ -3,7 +3,6 @@
 import Head from 'next/head';
 import React, { useState, useRef } from 'react';
 import { v4 as uuid4 } from 'uuid';
-import 'react-toastify/dist/ReactToastify.css';
 // @@@SNIPEND
 
 // @@@SNIPSTART typescript-next-oneclick-page-vars
@@ -29,7 +28,7 @@ const products = [
   },
 ];
 
-type ITEMSTATE = 'NEW' |  'ORDERED' | 'ERROR';
+type ITEMSTATE = 'NEW' | 'ORDERING' |  'ORDERED' | 'ERROR';
 // @@@SNIPEND
 
 // @@@SNIPSTART typescript-next-oneclick-page-product
@@ -39,6 +38,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
   const [transactionId, setTransactionId] = React.useState(uuid4());
 
   const buyProduct = () => {
+    setState('ORDERING');
     fetch('/api/startBuy', {
       method: 'POST',
       headers: {
@@ -55,6 +55,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
   };
 
   const buyStyle = "w-full bg-white hover:bg-blue-200 bg-opacity-75 backdrop-filter backdrop-blur py-2 px-4 rounded-md text-sm font-medium text-gray-900 text-center";
+  const orderingStyle = "w-full bg-yellow-500 bg-opacity-75 backdrop-filter backdrop-blur py-2 px-4 rounded-md text-sm font-medium text-gray-900 text-center";
   const orderStyle = "w-full bg-green-500 bg-opacity-75 backdrop-filter backdrop-blur py-2 px-4 rounded-md text-sm font-medium text-gray-900 text-center";
   const errorStyle = "w-full bg-white hover:bg-blue-200 bg-opacity-75 backdrop-filter backdrop-blur py-2 px-4 rounded-md text-sm font-medium text-gray-900 text-center";
 
@@ -69,6 +70,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
           {
             {
               NEW:     ( <button onClick={buyProduct} className={buyStyle}> Buy Now </button> ),
+              ORDERING: ( <div className={orderingStyle}>Orderering</div> ),
               ORDERED: ( <div className={orderStyle}>Ordered</div> ),
               ERROR:   ( <button onClick={buyProduct} className={errorStyle}>Error! Click to Retry </button> ),
             }[state]
