@@ -1,5 +1,5 @@
 // @@@SNIPSTART typescript-next-oneclick-api
-import { OneClickBuy } from '../../../temporal/src/workflows';
+import { oneClickBuy } from '../../../temporal/src/workflows';
 import { getTemporalClient } from '../../../temporal/src/client';
 import { TASK_QUEUE_NAME } from '../../../temporal/src/shared';
 
@@ -20,10 +20,10 @@ export async function POST(req: Request) {
   const { itemId, transactionId } = body;
 
   if (!itemId) {
-    return new Response("Must send the itemID to buy", { status: 405 });
+    return new Response("Must send the itemID to buy", { status: 400 });
   }
 
-  await getTemporalClient().workflow.start(OneClickBuy, {
+  await getTemporalClient().workflow.start(oneClickBuy, {
     taskQueue: TASK_QUEUE_NAME,
     workflowId: transactionId,
     args: [itemId],

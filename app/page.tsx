@@ -1,7 +1,7 @@
 // @@@SNIPSTART typescript-next-oneclick-page-start
 'use client'
 import Head from 'next/head';
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { v4 as uuid4 } from 'uuid';
 import 'react-toastify/dist/ReactToastify.css';
 // @@@SNIPEND
@@ -35,10 +35,7 @@ type ITEMSTATE = 'NEW' |  'ORDERED' | 'ERROR';
 // @@@SNIPSTART typescript-next-oneclick-page-product
 const Product: React.FC<ProductProps> = ({ product }) => {
   const itemId = product.id;
-  const [state, setState] = React.useState<ITEMSTATE>('NEW');
-  const stateRef = React.useRef<ITEMSTATE>();
-  stateRef.current = state;
-
+  const [state, setState] = useState<ITEMSTATE>('NEW');
   const [transactionId, setTransactionId] = React.useState(uuid4());
 
   const buyProduct = () => {
